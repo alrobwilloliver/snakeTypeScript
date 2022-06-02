@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            background: radial-gradient(ellipse farthest-corner at center, #8f4242 0%, #f8008f 100%) no-repeat;
+            background-size: cover;
+        }
+
+        #leaderboard {
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            display: flex;
+            font-family: Lato, sans-serif;
+            height: auto;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 1.5rem auto;
+            max-width: 75%;
+            min-width: 320px;
+            width: auto;
+        }
+
+        #leaderboard header {
+            background-color: #4e6df0;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            z-index: 1;
+        }
+
+        #leaderboard header h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin: auto;
+            text-align: center;
+        }
+
+        .points {
+            float: right;
+            background: #4e6df0;
+            border-radius: 50%;
+            color: #fff;
+            padding: .5rem;
+            text-align: center;
+        }
+
+        .main {
+            margin: 0 auto;
+            max-width: 76em;
+        }
+
+        header {
+            position: relative;
+        }
+
+        #button {
+            position: absolute;
+            top: 25%;
+            left: 2%;
+            background-color: #008CBA;
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+        }
+
+        #button:link,
+        #button:visited {
+            text-decoration: none;
+        }
+
+        .rb-grid {
+            list-style: none;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .rb-grid li {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, .25);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+            box-sizing: border-box;
+            display: list-item;
+            float: right;
+            font-size: 1.125rem;
+            font-style: italic;
+            list-style-position: inside;
+            list-style-type: decimal;
+            margin: -1px 20px 0 20px;
+            padding: 1.6rem;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: transform .5s ease;
+            width: 100%;
+        }
+
+        .rb-grid li:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            background: #eee;
+        }
+
+        li p {
+            font-size: 1rem;
+            font-style: normal;
+            margin: 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #leaderboard header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="leaderboard">
+        <header>
+            <h1>Snake Leaderboard</h1>
+            <a id="button" href="/">Play</a>
+        </header>
+        <div class="main">
+            <ol id="rb-grid" class="rb-grid clearfix">
+                <% if (locals.scores) { %>
+                <% for (var i = 0; scores.length > i; i++) { %>
+                <li>
+                    <p><%= scores[i].name %> <span class="points"><%= scores[i].score %> </span></p>
+                </li>
+                <% } %>
+                <% } %>
+            </ol>
+        </div>
+</body>
+
+
+</html>
